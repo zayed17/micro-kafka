@@ -10,10 +10,12 @@ export const user = async (req: Request, res: Response) => {
         if (!exists) {
             const newUser = new User({ email, password });
             const savedUser = await newUser.save();
+            
+            
             await sendMessageToKafka('user-created-topic', { userId: savedUser._id });
+            res.status(200).json({ id: savedUser._id });
         }
         
-        res.status(200).json({ status: "ok" });
     } catch (error) {
         res.status(404).json(error);
         console.log(error);

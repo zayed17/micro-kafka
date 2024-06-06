@@ -13,7 +13,8 @@ const Login: React.FC = () => {
       const response = await axios.post('http://localhost:3000/user', { email, password });
 
       if (response.status === 200) {
-        navigate('/product');
+        const userId = response.data.id; 
+        navigate(`/product/${userId}`); 
       } else {
         throw new Error('Login failed');
       }

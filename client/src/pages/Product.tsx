@@ -1,5 +1,7 @@
 import React, { useState, FormEvent,useEffect} from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
+
 interface Product {
     _id: string;
     productName: string;
@@ -7,6 +9,7 @@ interface Product {
     price: number;
 }
 const Product: React.FC = () => {
+  const { id } = useParams(); 
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);  
   const [productName, setProductName] = useState<string>('');
@@ -38,12 +41,13 @@ const Product: React.FC = () => {
   const handleSend = async(productId:String, productName:String, category:String, price:Number) => {
     try {
       const response = await axios.post('http://localhost:3003/cart/add', {
+        id,
         productId,
         productName,
         category,
         price
       });
-      console.log(response.data); 
+      // console.log(response.data); 
     } catch (error) {
       console.error('Error adding product to cart:', error);
     }
