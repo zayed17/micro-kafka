@@ -39,3 +39,21 @@ console.log("s")
   }
 };
 
+
+export const getCart = async (req: Request, res: Response) => {
+    try {
+        const id = req.params.id;
+        console.log(id, "getting or not");
+        const cartData = await Cart.findOne({ userId: id });
+
+        if (cartData) {
+            const products = (cartData as any).products; // Explicitly cast to any
+            res.json({ products });
+        } else {
+            res.json({ products: [] }); // Return empty array if cartData is null
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+}
