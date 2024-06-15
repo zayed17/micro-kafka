@@ -31,6 +31,6 @@ const cartSchema = new mongoose.Schema({
 
 export const Cart = mongoose.model('Cart', cartSchema);
 
-mongoose.connect('mongodb+srv://mzayed9745:PWWzKlATYMSw7dNA@cluster0.ef5mvbu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect('mongodb://localhost:27017/kafka-cart')
 .then(() => console.log('Connected to MongoDB'))
 .catch((error) => console.error('Error connecting to MongoDB:', error));

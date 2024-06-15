@@ -17,6 +17,6 @@ const productModelSchema = new mongoose.Schema({
 
 export const Product = mongoose.model('Product', productModelSchema);
 
-mongoose.connect('mongodb+srv://zayed17:zayed%40100@cluster0.j3wffyy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect('mongodb://localhost:27017/kafka-product')
 .then(() => console.log('Connected to MongoDB'))
 .catch((error) => console.error('Error connecting to MongoDB:', error));

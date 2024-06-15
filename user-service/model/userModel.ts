@@ -16,7 +16,7 @@ const userModelSchema = new mongoose.Schema({
 export const User = mongoose.model('User', userModelSchema);
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://mzayed9745:0J9ABbpJPGUftNZq@cluster0.pri7ci3.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect('mongodb://localhost:27017/kafka-user')
 .then(() => console.log('Connected to MongoDB'))
 .catch((error) => console.error('Error connecting to MongoDB:', error));
 
