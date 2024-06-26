@@ -47,10 +47,10 @@ export const getCart = async (req: Request, res: Response) => {
         const cartData = await Cart.findOne({ userId: id });
 
         if (cartData) {
-            const products = (cartData as any).products; // Explicitly cast to any
+            const products = (cartData as any).products; 
             res.json({ products });
         } else {
-            res.json({ products: [] }); // Return empty array if cartData is null
+            res.json({ products: [] });
         }
     } catch (error) {
         console.log(error);
